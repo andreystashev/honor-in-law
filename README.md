@@ -38,7 +38,7 @@ The published project contains **three chapters**. This is a personal narrative 
 
 The SDK provides the Python runtime; a separate `pip install` step is not needed. See the official [Ren'Py quickstart](https://www.renpy.org/doc/html/quickstart.html) for launcher setup and packaging.
 
-The committed runtime log records **Ren'Py 8.3.7**. Compatibility with newer engine versions has not been verified.
+The last recorded development environment used **Ren'Py 8.3.7**. Compatibility with newer engine versions has not been verified.
 
 ## Project structure
 
@@ -52,8 +52,17 @@ The committed runtime log records **Ren'Py 8.3.7**. Compatibility with newer eng
 | `game/audio/` | Audio assets |
 | `game/tl/` | Translation-related files |
 
-## Development status
+## Development and repository hygiene
 
-The repository also contains legacy runtime logs, compiled scripts, cache and save files. These are development artifacts; the editable game sources are the `.rpy` files.
+Edit the `.rpy` and `.rpym` sources. Ren'Py regenerates compiled scripts and
+engine caches when the project is launched. These outputs, runtime diagnostics,
+and local save/persistent data are ignored by Git and are not needed in a fresh
+source checkout. Keep player saves local; do not add them to commits.
 
-The screenshots show the game interface. This README update does not establish a tested packaged release or a fresh engine compatibility check.
+Before packaging or submitting a change, run **Check Script (Lint)** and
+**Launch Project** in the Ren'Py launcher, then check `git status` so generated
+files do not enter the change. The SDK is required for these checks; they are
+not replaced by a Python syntax check.
+
+The screenshots show the game interface. A fresh engine compatibility check and
+a tested packaged release have not been established by this repository cleanup.
